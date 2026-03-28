@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación</title>
 
   <style>
@@ -16,10 +17,14 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
+      /* 👇 MEJORA RESPONSIVE */
+      font-size: clamp(16px, 4.5vw, 20px);
     }
 
     * {
       font-style: italic;
+      box-sizing: border-box;
     }
 
     body::before {
@@ -43,6 +48,7 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      padding: 20px;
     }
 
     .carta-emoji {
@@ -52,6 +58,9 @@
       cursor: pointer;
       transition: transform 0.6s ease, background 0.6s ease;
       backdrop-filter: blur(10px);
+
+      /* 👇 RESPONSIVE */
+      max-width: 90%;
     }
 
     .carta-emoji:hover {
@@ -60,7 +69,7 @@
     }
 
     .sobre-cerrado {
-      font-size: 70px;
+      font-size: clamp(50px, 10vw, 70px);
       transition: transform 0.8s ease, opacity 0.5s ease;
     }
 
@@ -71,7 +80,7 @@
 
     .texto {
       margin-top: 10px;
-      font-size: 18px;
+      font-size: clamp(16px, 4vw, 18px);
     }
 
     /* INVITACIÓN */
@@ -86,10 +95,11 @@
       justify-content: center;
       position: relative;
       z-index: 1;
+      padding: 20px;
     }
 
     .seccion {
-      padding: 40px 20px;
+      padding: 30px 15px;
       display: flex;
       justify-content: center;
       position: relative;
@@ -98,7 +108,7 @@
 
     .contenido, .card {
       background: rgba(0,0,0,0.4);
-      padding: 50px;
+      padding: 30px;
       border-radius: 20px;
       backdrop-filter: blur(6px);
       max-width: 500px;
@@ -106,22 +116,22 @@
     }
 
     h1 {
-      font-size: 60px;
+      font-size: clamp(36px, 8vw, 60px);
       margin-bottom: 20px;
     }
 
     h3 {
-      font-size: 28px;
+      font-size: clamp(22px, 5vw, 28px);
       margin-bottom: 15px;
     }
 
     p {
-      font-size: 20px;
+      font-size: clamp(16px, 4.5vw, 20px);
       opacity: 1;
     }
 
     .contador {
-      font-size: 22px;
+      font-size: clamp(16px, 4.5vw, 22px);
       margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
@@ -139,8 +149,9 @@
 
     ul {
       text-align: left;
-      font-size: 18px;
+      font-size: clamp(16px, 4vw, 18px);
       margin-top: 15px;
+      padding-left: 20px;
     }
 
     li {
@@ -244,10 +255,9 @@
     const horas = Math.floor(diferencia / (1000 * 60 * 60)) % 24;
     const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
 
-    // 👇 EDAD CORRECTA (39 hasta el martes, luego 40)
     let edad = ahora.getFullYear() - nacimiento.getFullYear();
 
-    const cumpleEsteAño = new Date(ahora.getFullYear(), 2, 31); // marzo = 2
+    const cumpleEsteAño = new Date(ahora.getFullYear(), 2, 31);
     if (ahora < cumpleEsteAño) {
       edad = edad - 1;
     }
@@ -257,9 +267,16 @@
       <span>${dias} días</span>
       <span>${horas} horas</span>
       <span>${minutos} minutos</span>
-      <span>${segundos} segundos</span>
+      <span>${segundos}</span>
     `;
   }
+
+  setInterval(actualizarContador, 1000);
+  actualizarContador();
+</script>
+
+</body>
+</html>}
 
   setInterval(actualizarContador, 1000);
   actualizarContador();
