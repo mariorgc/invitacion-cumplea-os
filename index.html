@@ -13,18 +13,25 @@
       text-align: center;
       overflow-x: hidden;
       font-style: italic;
-      background-image: url("./foto_suegra.jpeg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
 
-      /* 👇 MEJORA RESPONSIVE */
       font-size: clamp(16px, 4.5vw, 20px);
+
+      /* quitamos fondo directo */
+      background: black;
     }
 
-    * {
-      font-style: italic;
-      box-sizing: border-box;
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("./foto_suegra.jpeg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: -2;
     }
 
     body::before {
@@ -35,7 +42,12 @@
       background: rgba(0,0,0,0.55);
       top: 0;
       left: 0;
-      z-index: 0;
+      z-index: -1;
+    }
+
+    * {
+      font-style: italic;
+      box-sizing: border-box;
     }
 
     /* PORTADA */
@@ -58,8 +70,6 @@
       cursor: pointer;
       transition: transform 0.6s ease, background 0.6s ease;
       backdrop-filter: blur(10px);
-
-      /* 👇 RESPONSIVE */
       max-width: 90%;
     }
 
@@ -83,7 +93,6 @@
       font-size: clamp(16px, 4vw, 18px);
     }
 
-    /* INVITACIÓN */
     #invitacion {
       display: none;
     }
@@ -169,6 +178,14 @@
       transform: translateY(0);
       opacity: 1;
     }
+
+    /* FIX iPhone extra */
+    @media (max-width: 768px) {
+      body::after {
+        background-position: center top;
+      }
+    }
+
   </style>
 </head>
 
