@@ -48,7 +48,6 @@
       box-sizing: border-box;
     }
 
-    /* ✨ TÍTULOS MANUSCRITOS */
     h1, h3 {
       font-family: 'Great Vibes', cursive;
       font-weight: normal;
@@ -236,22 +235,10 @@
 
 </div>
 
-<!-- 🎵 CANCIÓN -->
-<iframe id="ytplayer"
-  width="0"
-  height="0"
-  src="https://www.youtube.com/embed/i34pFNr42mc?enablejsapi=1"
-  frameborder="0"
-  allow="autoplay">
-</iframe>
-
 <script>
 function abrirInvitacion() {
   const carta = document.querySelector(".carta-emoji");
   carta.classList.add("abierta");
-
-  const iframe = document.getElementById("ytplayer");
-  iframe.src += "&autoplay=1";
 
   setTimeout(() => {
     document.getElementById("portada").style.display = "none";
